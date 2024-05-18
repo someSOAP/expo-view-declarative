@@ -17,6 +17,8 @@ class ExpoViewDeclarativeModule : Module() {
     // the view definition: Prop, Events.
     View(ExpoViewDeclarativeView::class) {
 
+      Events("onSubmit")
+
       Prop("btnText") { view: ExpoViewDeclarativeView, prop: String ->
         view.viewModel.updateBtnText(prop)
       }

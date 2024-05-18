@@ -3,10 +3,13 @@ package expo.modules.viewdeclarative
 import android.content.Context
 import androidx.compose.ui.platform.ComposeView
 import expo.modules.kotlin.AppContext
+import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.views.ExpoView
 
 class ExpoViewDeclarativeView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
     val viewModel = TestFormModel()
+
+    private val onSubmit by EventDispatcher()
 
     internal val composeView = ComposeView(context).also {
 
@@ -16,7 +19,10 @@ class ExpoViewDeclarativeView(context: Context, appContext: AppContext) : ExpoVi
         )
 
         it.setContent {
-            TestForm(viewModel = viewModel)
+            TestForm(
+                viewModel = viewModel,
+                onSubmit = { onSubmit(mapOf("inputText" to it)) }
+            )
         }
 
 

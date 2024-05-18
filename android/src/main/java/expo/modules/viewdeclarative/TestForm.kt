@@ -21,7 +21,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 
 @Composable
-fun TestForm(viewModel: TestFormModel) {
+fun TestForm(viewModel: TestFormModel, onSubmit: (String) -> Unit) {
 
     val inputText: String by viewModel.inputText.collectAsState()
     val btnText: String by viewModel.btnText.collectAsState()
@@ -51,7 +51,7 @@ fun TestForm(viewModel: TestFormModel) {
                 )
 
                 Button(
-                    onClick = { /*TODO*/ }
+                    onClick = { onSubmit(viewModel.inputText.value) }
                 ) {
                     Text(text = btnText)
                 }
@@ -66,5 +66,5 @@ fun TestForm(viewModel: TestFormModel) {
 @Preview
 @Composable
 fun TestFormPreview() {
-    TestForm(viewModel = TestFormModel())
+    TestForm(viewModel = TestFormModel(), onSubmit = {})
 }
