@@ -9,6 +9,8 @@ class TestFormViewModel : ObservableObject {
 struct TestForm: View {
     
     @StateObject var viewModel: TestFormViewModel
+    
+    var onSubmit: (String) -> Void
 
     
     var body: some View {
@@ -24,7 +26,7 @@ struct TestForm: View {
                     .frame(height: 25)
                 
                 Button(action: {
-                    // TODO
+                    onSubmit(viewModel.inputText)
                 }) {
                     Text(viewModel.btnText)
                         .foregroundColor(.white)

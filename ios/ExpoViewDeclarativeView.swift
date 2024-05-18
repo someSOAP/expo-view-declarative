@@ -8,11 +8,25 @@ class ExpoViewDeclarativeView: ExpoView {
     
     private let contentView: UIHostingController<TestForm>
     let viewModel = TestFormViewModel()
+    let onSubmit: EventDispatcher
     
     required init(appContext: AppContext? = nil) {
-        contentView = UIHostingController(rootView: TestForm(viewModel: self.viewModel))
+        onSubmit = EventDispatcher()
+        
+        var handleSubmit: ((String) -> Void)?
+        
+        contentView = UIHostingController(
+            rootView: TestForm(
+                viewModel: self.viewModel,
+                onSubmit: { inputText in
+                    handleSubmit?(inputText)
+                }
+            )
+        )
         
         super.init(appContext: appContext)
+        
+        handleSubmit = { inputText in self.onSubmit(["inputText": inputText]) }
         
         clipsToBounds = true
         addSubview(contentView.view)
