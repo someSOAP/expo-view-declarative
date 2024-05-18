@@ -1,12 +1,22 @@
 import SwiftUI
 
+
+class TestFormViewModel : ObservableObject {
+    @Published var inputText = "Initial Value"
+    @Published var btnText = ""
+}
+
 struct TestForm: View {
+    
+    @StateObject var viewModel: TestFormViewModel
+
+    
     var body: some View {
         VStack {
             VStack{
                 TextField(
                     "Input",
-                    text: .constant("Value")
+                    text: $viewModel.inputText
                 )
                 .textFieldStyle(.roundedBorder)
                 
@@ -16,7 +26,7 @@ struct TestForm: View {
                 Button(action: {
                     // TODO
                 }) {
-                    Text("Click me")
+                    Text(viewModel.btnText)
                         .foregroundColor(.white)
                         .padding(10)
                         .background(Color.blue)

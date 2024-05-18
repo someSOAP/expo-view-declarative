@@ -3,7 +3,9 @@ import * as React from 'react';
 import { ViewProps } from "react-native";
 
 
-interface ExpoViewDeclarativeViewProps extends ViewProps {}
+interface ExpoViewDeclarativeViewProps extends ViewProps {
+  btnText: string;
+}
 
 const NativeView: React.ComponentType<ExpoViewDeclarativeViewProps> =
   requireNativeViewManager('ExpoViewDeclarative');

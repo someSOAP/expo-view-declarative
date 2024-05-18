@@ -7,9 +7,10 @@ import UIKit
 class ExpoViewDeclarativeView: ExpoView {
     
     private let contentView: UIHostingController<TestForm>
+    let viewModel = TestFormViewModel()
     
     required init(appContext: AppContext? = nil) {
-        contentView = UIHostingController(rootView: TestForm())
+        contentView = UIHostingController(rootView: TestForm(viewModel: self.viewModel))
         
         super.init(appContext: appContext)
         

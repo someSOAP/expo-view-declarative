@@ -5,7 +5,10 @@ import { ExpoViewDeclarativeView } from 'expo-view-declarative';
 export default function App() {
   return (
     <View style={styles.container}>
-      <ExpoViewDeclarativeView style={{ flex: 1, width: '100%' }} />
+      <ExpoViewDeclarativeView
+        style={{ flex: 1, width: '100%' }}
+        btnText="Submit"
+      />
     </View>
   );
 }
