@@ -1,7 +1,9 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import * as React from 'react';
+import { ViewProps } from "react-native";
 
-import { ExpoViewDeclarativeViewProps } from './ExpoViewDeclarative.types';
+
+interface ExpoViewDeclarativeViewProps extends ViewProps {}
 
 const NativeView: React.ComponentType<ExpoViewDeclarativeViewProps> =
   requireNativeViewManager('ExpoViewDeclarative');

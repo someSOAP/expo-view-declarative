@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import * as ExpoViewDeclarative from 'expo-view-declarative';
+import { ExpoViewDeclarativeView } from 'expo-view-declarative';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>{ExpoViewDeclarative.hello()}</Text>
+      <ExpoViewDeclarativeView style={{ flex: 1, width: '100%' }} />
     </View>
   );
 }
