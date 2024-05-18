@@ -59,6 +59,9 @@ dependencies {
   // and ui library
   implementation("androidx.compose.material3:material3")
 
+  //View Model
+  implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.0")
+
   // OPTIONAL - Android Studio Preview support
   implementation("androidx.compose.ui:ui-tooling-preview")
   debugImplementation("androidx.compose.ui:ui-tooling")

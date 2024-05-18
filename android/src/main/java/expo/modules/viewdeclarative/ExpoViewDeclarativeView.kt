@@ -6,6 +6,8 @@ import expo.modules.kotlin.AppContext
 import expo.modules.kotlin.views.ExpoView
 
 class ExpoViewDeclarativeView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
+    val viewModel = TestFormModel()
+
     internal val composeView = ComposeView(context).also {
 
         it.layoutParams = LayoutParams(
@@ -14,10 +16,12 @@ class ExpoViewDeclarativeView(context: Context, appContext: AppContext) : ExpoVi
         )
 
         it.setContent {
-            TestForm()
+            TestForm(viewModel = viewModel)
         }
 
 
         addView(it)
     }
+
+
 }

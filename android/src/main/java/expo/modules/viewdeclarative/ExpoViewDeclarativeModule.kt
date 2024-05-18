@@ -16,9 +16,9 @@ class ExpoViewDeclarativeModule : Module() {
     // Enables the module to be used as a native view. Definition components that are accepted as part of
     // the view definition: Prop, Events.
     View(ExpoViewDeclarativeView::class) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { view: ExpoViewDeclarativeView, prop: String ->
-        println(prop)
+
+      Prop("btnText") { view: ExpoViewDeclarativeView, prop: String ->
+        view.viewModel.updateBtnText(prop)
       }
     }
   }

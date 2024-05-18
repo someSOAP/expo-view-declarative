@@ -16,9 +16,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+// For correct syntax of using ViewModel
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 @Composable
-fun TestForm() {
+fun TestForm(viewModel: TestFormModel) {
+
+    val inputText: String by viewModel.inputText.collectAsState()
+    val btnText: String by viewModel.btnText.collectAsState()
+
+
     Column (
         Modifier
             .fillMaxWidth()
@@ -34,8 +42,8 @@ fun TestForm() {
             ) {
 
                 TextField(
-                    value = "Value",
-                    onValueChange = { /*TODO*/ },
+                    value = inputText,
+                    onValueChange = { viewModel.updateInputText(it) }
                 )
 
                 Spacer(
@@ -45,7 +53,7 @@ fun TestForm() {
                 Button(
                     onClick = { /*TODO*/ }
                 ) {
-                    Text(text = "Click me!")
+                    Text(text = btnText)
                 }
 
             }
@@ -58,5 +66,5 @@ fun TestForm() {
 @Preview
 @Composable
 fun TestFormPreview() {
-    TestForm()
+    TestForm(viewModel = TestFormModel())
 }
